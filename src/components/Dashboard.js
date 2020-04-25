@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Header } from './layout/Header';
+import { Content } from './layout/Content';
+
 import { firebase } from '../firebase';
 
 export const Dashboard = () => {
@@ -28,14 +31,15 @@ export const Dashboard = () => {
 	console.log(projects);
 
 	return (
-		<div>
+		<main>
+			<Header />
+			<Content />
 			<h2>dashboard</h2>
 			<h3> {currentUser.email} </h3>
 			<h3> {currentUser.uid} </h3>
-			<h3> {projects} </h3>
 			<button onClick={() => firebase.auth().signOut()} type='button'>
 				Log out
 			</button>
-		</div>
+		</main>
 	);
 };
