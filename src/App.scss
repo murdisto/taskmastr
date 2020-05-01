@@ -32,7 +32,9 @@ rgba(0, 0, 0, 0.1) 0px 4px 11px;
 $generic-border: 1px solid #f1f1f1;
 $generic-bg: #764abc;
 
-// Mixins
+//
+// -----------------------------Mixins
+//
 
 @mixin va($va-align: center) {
   display: -webkit-box;
