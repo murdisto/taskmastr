@@ -32,9 +32,8 @@ rgba(0, 0, 0, 0.1) 0px 4px 11px;
 $generic-border: 1px solid #f1f1f1;
 $generic-bg: #764abc;
 
-//
-// -----------------------------Mixins
-//
+
+// Mixins -----------------------------
 
 @mixin va($va-align: center) {
   display: -webkit-box;
@@ -175,6 +174,9 @@ header {
     }
 
     div {
+      display: flex;
+      align-items: center;
+
       &.logo {
         @include va('left');
         height: 2em;
@@ -192,6 +194,7 @@ header {
       &.settings {
         grid-area: 1 / 2;
         text-align: right;
+        justify-content: end;
 
         ul {
           float: right;
@@ -242,6 +245,207 @@ header {
           }
         }
       }
+
+      &.settings__logout {
+        button {
+          @include transparent-button();
+          white-space: nowrap;
+          margin-left: 15px;
+          color: white;
+          cursor: pointer;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          flex-direction: column;
+          align-self: center;
+
+        }
+      }
     }
   }
+}
+
+// Sidebar ------------------------------
+
+.sidebar {
+  @include no-select();
+  width: 266px;
+  height: calc(100vh);
+  padding-top: 74px;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-right: $generic-border;
+  background-color: #fafafa;
+
+  @include mq('900px') {
+    display: none;
+  }
+
+  li {
+    &:hover .sidebar__project-delete {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+
+  &__project {
+    @include va('left');
+    padding-left: 5px;
+    transition: padding-left .25s;
+    cursor: pointer;
+
+    div:nth-child(1) {
+      padding: 5px 0;
+      padding-left: 10px;
+      padding-right: 15px;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    &-delete {
+      margin-left: auto;
+      padding-right: 0.3rem;
+      display: none;
+
+      svg {
+        color: #cacaca;
+      }
+    }
+
+    &.active,
+    &:hover {
+      font-weight: bold;
+      background-color: white;
+      padding-left: 40px;
+    }
+
+    &:nth-child(1) {
+      .sidebar__dot {
+        color: #6accbc;
+      }
+    }
+
+    &:nth-child(2) {
+      .sidebar__dot {
+        color: #fad003;
+      }
+    }
+
+    &:nth-child(3) {
+      .sidebar__dot {
+        color: #ff8d85;
+      }
+    }
+
+    &:nth-child(4) {
+      .sidebar__dot {
+        color: #ff9932;
+      }
+    }
+
+    &:nth-child(5) {
+      .sidebar__dot {
+        color: #af38eb;
+      }
+    }
+  }
+
+  &__projects {
+    padding-left: 0px;
+  }
+
+  &__dot {
+    margin-right: 10px;
+    font-size: 30px;
+  }
+
+  &__middle {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-top: $generic-border;
+    border-bottom: $generic-border;
+    padding-left: 10px;
+    cursor: pointer;
+
+    span {
+      color: #0000008a;
+      margin-right: 10px;
+
+      svg.hidden-projects {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+    }
+
+    h2 {
+      margin: 0;
+      color: #333;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
+
+  &__list {
+    li {
+      list-style-type: none;
+      color: #333;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      cursor: pointer;
+      line-height: 1.50;
+      font-size: 15px;
+      padding-left: 0;
+      padding-right: 0;
+
+      &.active,
+      &:hover {
+        font-weight: bold;
+        background-color: white;
+      }
+    }
+
+    div:nth-child(1) {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      padding: 10px 0 10px 10px;
+      width: 100%;
+    }
+
+    span:first-of-type {
+      margin-right: 10px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      fill: #555;
+    }
+
+
+  }
+}
+
+.temp {
+  margin-top: 100px;
+  margin-left: 300px;
 }

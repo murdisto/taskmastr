@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsMoon } from 'react-icons/bs';
 import Taskmastr from '../../images/taskmastr';
+import { firebase } from '../../firebase';
 
 export const Header = () => {
 	return (
@@ -27,6 +28,11 @@ export const Header = () => {
 							</button>
 						</li>
 					</ul>
+					<div className='settings__logout'>
+						<button onClick={() => firebase.auth().signOut()} type='button'>
+							Log out
+						</button>
+					</div>
 				</div>
 			</nav>
 		</header>
