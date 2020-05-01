@@ -6,6 +6,7 @@ import {
 	BsCalendarFill,
 	BsCalendar,
 } from 'react-icons/bs';
+import { AddProject } from '../AddProject';
 import { useSelectedProjectValue } from '../../context';
 import { Projects } from '../Projects';
 
@@ -66,6 +67,7 @@ export const Sidebar = () => {
 				<h2>Projects</h2>
 			</div>
 			<ul className='sidebar__projects'>{showProjects && <Projects />}</ul>
+			{showProjects && <AddProject />}
 		</div>
 	);
 };
