@@ -1,8 +1,17 @@
+export const collatedTasks = [
+	{ key: 'INBOX', name: 'Inbox' },
+	{ key: 'TODAY', name: 'Today' },
+	{ key: 'THIS_WEEK', name: 'This Week' },
+];
+
 export const getTitle = (projects, projectId) =>
 	projects.find((project) => project.projectId === projectId);
 
 export const getCollatedTitle = (projects, key) =>
 	projects.find((project) => project.key === key);
+
+export const collatedTasksExist = (selectedProject) =>
+	collatedTasks.find((task) => task.key === selectedProject);
 
 // Generate a new id for when a new task or project is created
 export const generatePushId = (() => {
