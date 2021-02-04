@@ -22,6 +22,7 @@ export const Projects = ({ activeValue = true }) => {
 				onClick={() => {
 					setActive(project.projectId);
 					setSelectedProject(project.projectId);
+					console.log('project clicked!');
 				}}
 			>
 				<SingleProject project={project} />

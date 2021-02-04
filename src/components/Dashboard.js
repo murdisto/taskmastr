@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Header } from './layout/Header';
 import { Content } from './layout/Content';
 import { ProjectsProvider, SelectedProjectProvider } from '../context';
+import { Tasks } from './Tasks';
 
 import { firebase } from '../firebase';
 
@@ -22,6 +23,7 @@ export const Dashboard = () => {
 						<button onClick={() => firebase.auth().signOut()} type='button'>
 							Log out
 						</button>
+						<Tasks />
 					</div>
 				</main>
 			</ProjectsProvider>
