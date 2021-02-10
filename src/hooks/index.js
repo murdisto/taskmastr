@@ -4,7 +4,7 @@ import { firebase } from '../firebase';
 import { collatedTasksExist } from '../helpers';
 
 export const useProjects = () => {
-	console.log('useProjects called');
+	console.log('useProjects');
 	const { currentUser } = firebase.auth();
 	const [projects, setProjects] = useState([]);
 
@@ -24,10 +24,12 @@ export const useProjects = () => {
 				}));
 
 				if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
+					console.log('setProjects called', allProjects);
 					setProjects(allProjects);
 				}
 			});
-	}, [projects, currentUser.uid]); // rerun useEffect if projects or currentUser.uid changes
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []); // filling this dependency array was causing a memory leak as it was updating projects, then rerendering when it changed.
 	// console.log('PROJECTS', projects);
 
 	return { projects, setProjects };
